@@ -9,9 +9,3 @@ module.exports = {
     app.use(express.static(path.join(__dirname, "..", "assets")));
   }
 };
-
-require("dotenv").config();
-
-module.exports = {
-  init() {}
-};
