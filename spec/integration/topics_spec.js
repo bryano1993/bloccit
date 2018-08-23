@@ -4,7 +4,7 @@ const base = "http://localhost:3000/topics/";
 
 describe("routes : topics", () => {
   describe("GET /topics", () => {
-    it("should return a status code 200", done => {
+    it("should return a status code 200", () => {
       request.get(base, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         done();
