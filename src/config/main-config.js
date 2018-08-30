@@ -6,8 +6,10 @@ const bodyParser = require("body-parser");
 module.exports = {
   init(app, express) {
     app.set("views", viewsFolder);
-    app.set("view engine", "ejs");
+    app.set("view engine", "ejs"); //instantiating EJS
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.static(path.join(__dirname, "..", "assets")));
   }
 };
+
+//added ejs

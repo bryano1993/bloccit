@@ -8,3 +8,5 @@ module.exports = {
     app.use(postRoutes);
   }
 };
+
+// initializes all our routes.
