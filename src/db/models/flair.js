@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Flair.associate = function(models) {
     // associations can be defined here
-    Post.belongsTo(models.Topic, {
+    Flair.belongsTo(models.Topic, {
       foreignKey: "topicId",
       onDelete: "CASCADE"
     });

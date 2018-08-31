@@ -27,6 +27,7 @@ module.exports = {
       topicId: {
         type: Sequelize.INTEGER,
         onDelete: "CASCADE", // delete flair if parent topic is deleted
+        allowNull: false,
         references: {
           // association information
           model: "Topics", // table name
