@@ -24,7 +24,7 @@ describe("routes : topics", () => {
   });
 
   describe("GET /topics", () => {
-    it("should return a status code 200 and all topics", () => {
+    it("should return a status code 200 and all topics", done => {
       request.get(base, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
@@ -125,10 +125,8 @@ describe("routes : topics", () => {
           description: "There are a lot of them"
         }
       };
-
       request.post(options, (err, res, body) => {
         expect(err).toBeNull();
-
         Topic.findOne({
           where: { id: this.topic.id }
         }).then(topic => {
