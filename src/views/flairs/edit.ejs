@@ -12,17 +12,17 @@
 
         <h1>Edit Flair</h1>
 
-        <form action="/topics/<%= post.topicId %>/posts/<%= post.id %> flairs/create" method="post">
+        <form action="/topics/<%= topicId %>/posts/<%= flair.postId %>/flairs/<%= flair.id %>/update" method="post">
             <div class="form-group">
-                <label for="title">Flair name</label>
-                <input value="<%= post.title %>" type="text" class="form-control" name="title" aria-describedby="titleHelp"
+                <label for="title">Flair title</label>
+                <input value="<%= flair.name %>" type="text" class="form-control" name="name" aria-describedby="titleHelp"
                     placeholder="Enter Title">
             </div>
             <div class="form-group">
-                <label for="body">Flair Color</label>
-                <textarea rows="4" class="form-control" name="body" placeholder="Enter Flair Color"></textarea>
+                <label for="body">Flair body</label>
+                <textarea rows="4" class="form-control" name="color" placeholder="Enter Description"><%= flair.color %></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </main>
 

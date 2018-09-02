@@ -22,11 +22,11 @@ module.exports = {
         callback(err);
       });
   },
+
   deleteFlair(id, callback) {
-    return flair
-      .destroy({
-        where: { id }
-      })
+    return Flair.destroy({
+      where: { id }
+    })
       .then(deletedRecordsCount => {
         callback(null, deletedRecordsCount);
       })
@@ -34,12 +34,12 @@ module.exports = {
         callback(err);
       });
   },
+
   updateFlair(id, updatedFlair, callback) {
     return Flair.findById(id).then(flair => {
       if (!flair) {
-        return callback("Post not found");
+        return callback("Flair not found");
       }
-
       flair
         .update(updatedFlair, {
           fields: Object.keys(updatedFlair)
