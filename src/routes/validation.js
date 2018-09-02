@@ -25,10 +25,6 @@ module.exports = {
   validateTopics(req, res, next) {
     if (req.method === "POST") {
       req
-        .checkParams("topicId", "must be valid")
-        .notEmpty()
-        .isInt();
-      req
         .checkBody("title", "must be at least 5 characters in length")
         .isLength({ min: 5 });
       req
@@ -44,4 +40,5 @@ module.exports = {
     } else {
       return next();
     }
+  }
 };

@@ -86,9 +86,9 @@ describe("routes : topics", () => {
       };
 
       request.post(options, (err, res, body) => {
-        Post.findOne({ where: { title: "a" } })
+        Topic.findOne({ where: { title: "a" } })
           .then(post => {
-            expect(post).toBeNull();
+            expect(topic).toBeNull();
             done();
           })
           .catch(err => {
