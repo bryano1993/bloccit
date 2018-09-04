@@ -4,11 +4,13 @@ module.exports = {
   new(req, res, next) {
     res.render("posts/new", { topicId: req.params.topicId });
   },
+
   create(req, res, next) {
     let newPost = {
       title: req.body.title,
       body: req.body.body,
-      topicId: req.params.topicId
+      topicId: req.params.topicId,
+      userId: req.user.id
     };
     postQueries.addPost(newPost, (err, post) => {
       if (err) {
@@ -18,6 +20,7 @@ module.exports = {
       }
     });
   },
+
   show(req, res, next) {
     postQueries.getPost(req.params.id, (err, post) => {
       if (err || post == null) {
@@ -27,6 +30,7 @@ module.exports = {
       }
     });
   },
+
   destroy(req, res, next) {
     postQueries.deletePost(req.params.id, (err, deletedRecordsCount) => {
       if (err) {
@@ -39,6 +43,7 @@ module.exports = {
       }
     });
   },
+
   edit(req, res, next) {
     postQueries.getPost(req.params.id, (err, post) => {
       if (err || post == null) {
@@ -48,6 +53,7 @@ module.exports = {
       }
     });
   },
+
   update(req, res, next) {
     postQueries.updatePost(req.params.id, req.body, (err, post) => {
       if (err || post == null) {
