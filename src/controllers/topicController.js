@@ -1,5 +1,8 @@
 const topicQueries = require("../db/queries.topics.js");
+<<<<<<< HEAD
 const Authorizer = require("../policies/topic");
+=======
+>>>>>>> assignment-9-postresource2
 
 module.exports = {
   index(req, res, next) {

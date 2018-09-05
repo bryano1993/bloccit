@@ -231,6 +231,7 @@ describe("routes : topics", () => {
           description: "What's your favorite blink-182 song?"
         }
       };
+<<<<<<< HEAD
 
       it("should not create a new topic", done => {
         request.post(
@@ -278,6 +279,14 @@ describe("routes : topics", () => {
         request.get(`${base}${this.topic.id}`, (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("JS Frameworks");
+=======
+      request.post(options, (err, res, body) => {
+        expect(err).toBeNull();
+        Topic.findOne({
+          where: { id: this.topic.id }
+        }).then(topic => {
+          expect(topic.title).toBe("JavaScript Frameworks");
+>>>>>>> assignment-9-postresource2
           done();
         });
       });

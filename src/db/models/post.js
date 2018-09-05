@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
     Post.belongsTo(models.User, {
       foreignKey: "userId",
       onDelete: "CASCADE"
+    Post.hasMany(models.Flair, {
+      foreignKey: "postId",
+      as: "flairs"
     });
   };
   return Post;

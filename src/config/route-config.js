@@ -9,10 +9,14 @@ module.exports = {
       const mockAuth = require("../../spec/support/mock-auth.js");
       mockAuth.fakeIt(app);
     }
+    const flairRoutes = require("../routes/flairs");
 
     app.use(staticRoutes);
     app.use(topicRoutes);
     app.use(postRoutes);
     app.use(userRoutes);
+    app.use(flairRoutes);
   }
 };
+
+// initializes all our routes.
