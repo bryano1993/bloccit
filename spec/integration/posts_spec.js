@@ -46,20 +46,29 @@ describe("routes : posts", () => {
     });
   });
 
-  //contest of member user
-  describe("member user performing CRUD actions for Topic", () => {
+  //context of member user
+  describe("member user performing CRUD actions for Post", () => {
     beforeEach(done => {
-      request.get(
-        {
-          url: "http://localhost:3000/auth/fake",
-          form: {
-            role: "member"
+      User.create({
+        email: "admin@example.com",
+        password: "123456",
+        role: "member"
+      }).then(user => {
+        request.get(
+          {
+            // mock authentication
+            url: "http://localhost:3000/auth/fake",
+            form: {
+              role: user.role, // mock authenticate as admin user
+              userId: user.id,
+              email: user.email
+            }
+          },
+          (err, res, body) => {
+            done();
           }
-        },
-        (err, res, body) => {
-          done();
-        }
-      );
+        );
+      });
     });
 
     describe("GET /topics/:topicId/posts/new", () => {
