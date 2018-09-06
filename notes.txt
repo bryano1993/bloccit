@@ -1,0 +1,21 @@
+psql bloccit-dev postgres to run database
+
+
+$ sequelize db:migrate
+$ sequelize db:migrate --env test
+
+updates our database
+
+
+sequelize model:create --name Banner --attributes source:string,description:string
+
+create new model
+
+
+sequelize db:seed:all
+
+seed data 
+
+pg_ctl -D C:/PostgreSQL/data/pg10 start
+
+start server

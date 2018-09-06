@@ -69,12 +69,6 @@ describe("routes : posts", () => {
           expect(body).toContain("Posts");
           done();
         });
-  describe("GET /topics/:topicId/posts/new", () => {
-    it("should render a new post form", done => {
-      request.get(`${base}/${this.topic.id}/posts/new`, (err, res, body) => {
-        expect(err).toBeNull();
-        expect(body).toContain("New Post");
-        done();
       });
     });
 
@@ -198,7 +192,6 @@ describe("routes : posts", () => {
       });
     });
 
-<<<<<<< HEAD
     describe("POST /topics/:topicId/posts/create", () => {
       it("should create a new post and redirect", done => {
         const options = {
@@ -255,15 +248,6 @@ describe("routes : posts", () => {
         request.get(
           `${base}/${this.topic.id}/posts/${this.post.id}`,
           (err, res, body) => {
-=======
-  describe("POST /topics/:topicId/posts/:id/destroy", () => {
-    it("should delete the post with the associated ID", done => {
-      expect(this.post.id).toBe(1);
-      request.post(
-        `${base}/${this.topic.id}/posts/${this.post.id}/destroy`,
-        (err, res, body) => {
-          Post.findById(1).then(post => {
->>>>>>> assignment-9-postresource2
             expect(err).toBeNull();
             expect(body).toContain("Snowball Fighting");
             done();
@@ -288,7 +272,6 @@ describe("routes : posts", () => {
       });
     });
 
-<<<<<<< HEAD
     describe("GET /topics/:topicId/posts/:id/edit", () => {
       it("should render a view with an edit post form", done => {
         request.get(
@@ -322,18 +305,11 @@ describe("routes : posts", () => {
 
       it("should update the post with the given values", done => {
         const options = {
-=======
-  describe("POST /topics/:topicId/posts/:id/update", () => {
-    it("should return a status code 302", done => {
-      request.post(
-        {
->>>>>>> assignment-9-postresource2
           url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
           form: {
             title: "Snowman Building Competition",
             body: "I love watching them melt slowly."
           }
-<<<<<<< HEAD
         };
         request.post(options, (err, res, body) => {
           expect(err).toBeNull();
@@ -343,30 +319,6 @@ describe("routes : posts", () => {
             expect(post.title).toBe("Snowman Building Competition");
             done();
           });
-=======
-        },
-        (err, res, body) => {
-          expect(res.statusCode).toBe(302);
-          done();
-        }
-      );
-    });
-
-    it("should update the post with the given values", done => {
-      const options = {
-        url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
-        form: {
-          title: "Snowman Building Competition"
-        }
-      };
-      request.post(options, (err, res, body) => {
-        expect(err).toBeNull();
-        Post.findOne({
-          where: { id: this.post.id }
-        }).then(post => {
-          expect(post.title).toBe("Snowman Building Competition");
-          done();
->>>>>>> assignment-9-postresource2
         });
       });
     });

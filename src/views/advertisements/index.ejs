@@ -9,18 +9,13 @@
     <main class="container">
         <% include ../static/partials/navbar.ejs %>
 
-        <h1>Topics</h1>
-
-        <% if(currentUser && currentUser.isAdmin()) { %>
-        <a href="/topics/new" class="btn btn-success">New Topic</a>
-        <% } %>
+        <h1>Advertisements</h1>
 
         <ul class="list-group">
-
-            <% topics.forEach((topic) => { %>
+            <% advertisements.forEach((advertisement) => { %>
             <li class="list-group-item">
-                <a href="/topics/<%= topic.id %>">
-                    <%= topic.title %> </a>
+                <a href="/advertisements/<%= advertisement.id %>">
+                    <%= advertisement.title %> </a>
             </li>
             <% }) %>
         </ul>

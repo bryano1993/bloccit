@@ -10,7 +10,7 @@ const configPath = path.join(__dirname, "..", "config", "config.json");
 
 const configObj = require(configPath);
 
-const config = configObj["test"];
+const config = configObj["development"];
 
 // var config = require(__dirname + "/../config/config.json")[env];
 var db = {};

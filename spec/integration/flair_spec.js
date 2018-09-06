@@ -26,8 +26,8 @@ describe("routes : flair", () => {
           .then(post => {
             this.post = post;
             Flair.create({
-              name: "Web Developer",
-              color: "red",
+              name: "Winter Olympics",
+              color: "blue",
               postId: this.post.id
             }).then(flair => {
               this.flair = flair;
@@ -60,15 +60,15 @@ describe("routes : flair", () => {
       const options = {
         url: `${base}/${this.topic.id}/posts/${this.post.id}/flairs/create`,
         form: {
-          title: "Entrepreneur",
+          title: "Blue flair",
           body: "blue"
         }
       };
       request.post(options, (err, res, body) => {
-        Flair.findOne({ where: { name: "Entrepreneur" } })
+        Flair.findOne({ where: { name: "Blue flair" } })
           .then(flair => {
             expect(flair).not.toBeNull();
-            expect(flair.name).toBe("Entrepreneur");
+            expect(flair.name).toBe("Blue flair");
             expect(flair.color).toBe("blue");
             expect(flair.postId).not.toBeNull();
             done();
@@ -89,7 +89,7 @@ describe("routes : flair", () => {
         }`,
         (err, res, body) => {
           expect(err).toBeNull();
-          expect(body).toContain("Web Developer");
+          expect(body).toContain("Winter Olympics");
           done();
         }
       );
@@ -123,7 +123,7 @@ describe("routes : flair", () => {
         (err, res, body) => {
           expect(err).toBeNull();
           expect(body).toContain("Edit Flair");
-          expect(body).toContain("Web Developer");
+          expect(body).toContain("Winter Olympics");
           done();
         }
       );
@@ -139,7 +139,7 @@ describe("routes : flair", () => {
           }/update`,
           form: {
             name: "Winter games",
-            color: "orange"
+            color: "red"
           }
         },
         (err, res, body) => {

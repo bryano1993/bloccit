@@ -38,7 +38,7 @@ module.exports = {
   updateFlair(id, updatedFlair, callback) {
     return Flair.findById(id).then(flair => {
       if (!flair) {
-        return callback("Flair can found");
+        return callback("Flair not found");
       }
       flair
         .update(updatedFlair, {

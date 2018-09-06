@@ -44,15 +44,8 @@ module.exports = {
       });
   },
 
-<<<<<<< HEAD
   deleteTopic(req, callback) {
     return Topic.findById(req.params.id)
-=======
-  deleteTopic(id, callback) {
-    return Topic.destroy({
-      where: { id }
-    })
->>>>>>> assignment-9-postresource2
       .then(topic => {
         const authorized = new Authorizer(req.user, topic).destroy();
 
@@ -70,7 +63,6 @@ module.exports = {
       });
   },
 
-<<<<<<< HEAD
   updateTopic(req, updatedTopic, callback) {
     return Topic.findById(req.params.id).then(topic => {
       if (!topic) {
@@ -94,23 +86,6 @@ module.exports = {
         req.flash("notice", "You are not authorized to do that.");
         callback("Forbidden");
       }
-=======
-  updateTopic(id, updatedTopic, callback) {
-    return Topic.findById(id).then(topic => {
-      if (!topic) {
-        return callback("Topic not found");
-      }
-      topic
-        .update(updatedTopic, {
-          fields: Object.keys(updatedTopic)
-        })
-        .then(() => {
-          callback(null, topic);
-        })
-        .catch(err => {
-          callback(err);
-        });
->>>>>>> assignment-9-postresource2
     });
   }
 };
