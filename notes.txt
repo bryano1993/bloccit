@@ -1,5 +1,8 @@
 psql bloccit-dev postgres to run database
 
+SELECT * FROM "Users";
+
+UPDATE "Users" SET role = 'admin' WHERE id = 007;
 
 $ sequelize db:migrate
 $ sequelize db:migrate --env test
