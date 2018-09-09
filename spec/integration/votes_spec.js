@@ -55,6 +55,7 @@ describe("routes : votes", () => {
   });
 
   // test suites go here
+  //guest user
   describe("guest attempting to vote on a post", () => {
     beforeEach(done => {
       // before each suite in this context
@@ -97,6 +98,7 @@ describe("routes : votes", () => {
     });
   });
 
+  //signed in user
   describe("signed in user voting on a post", () => {
     beforeEach(done => {
       // before each suite in this context
@@ -157,6 +159,52 @@ describe("routes : votes", () => {
           })
             .then(vote => {
               // confirm that a downvote was created
+              expect(vote).not.toBeNull();
+              expect(vote.value).toBe(-1);
+              expect(vote.userId).toBe(this.user.id);
+              expect(vote.postId).toBe(this.post.id);
+              done();
+            })
+            .catch(err => {
+              console.log(err);
+              done();
+            });
+        });
+      });
+    });
+
+    describe("GET /topics/:topicId/posts/:postId/votes/downvote", () => {
+      it("should not create multiple votes for a user", done => {
+        const options = {
+          url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
+        };
+        request.get(options, (err, res, body) => {
+          Vote.findOne({
+            where: {
+              userId: this.user.id,
+              postId: this.post.id
+            }
+          })
+            .then(vote => {
+              expect(vote).not.toBeNull();
+              expect(vote.value).toBe(-1);
+              expect(vote.userId).toBe(this.user.id);
+              expect(vote.postId).toBe(this.post.id);
+              done();
+            })
+            .catch(err => {
+              console.log(err);
+              done();
+            });
+        });
+        request.get(options, (err, res, body) => {
+          Vote.findOne({
+            where: {
+              userId: this.user.id,
+              postId: this.post.id
+            }
+          })
+            .then(vote => {
               expect(vote).not.toBeNull();
               expect(vote.value).toBe(-1);
               expect(vote.userId).toBe(this.user.id);
