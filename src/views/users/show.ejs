@@ -13,7 +13,6 @@
 
         <% include ../static/partials/messages.ejs %>
 
-
         <h1>
             <%= `${user.email}'s profile` %>
         </h1>
@@ -24,10 +23,8 @@
 
         <ul class="list-unstyled">
 
-
             <% if(posts) { %>
             <% posts.forEach((post) => { %>
-
             <li>
                 <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>">
                     <%= post.title %>
@@ -42,11 +39,8 @@
 
         <ul class="list-unstyled">
 
-
             <% if(comments) { %>
             <% comments.forEach((comment) => { %>
-
-
             <li>
                 <span>Post: </span><a href="/topics/<%= comment.Post.topicId %>/posts/<%= comment.Post.id %>">
                     <%= comment.Post.title %>
@@ -54,6 +48,22 @@
                 <p>Comment:
                     <%= comment.body %>
                 </p>
+            </li>
+            <hr>
+            <% }) %>
+            <% } %>
+        </ul>
+
+        <h2>Favorited Posts</h2>
+
+        <ul class="list-unstyled">
+
+            <% if(favorites) { %>
+            <% favorites.forEach((favorite) => { %>
+            <li>
+                <span>Favorite: </span><a href="/topics/<%= favorite.Post.topicId %>/posts/<%= favorite.Post.id %>">
+                    <%= favorite.Post.title %>
+                </a>
             </li>
             <hr>
             <% }) %>
