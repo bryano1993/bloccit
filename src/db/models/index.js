@@ -10,7 +10,7 @@ const configPath = path.join(__dirname, "..", "config", "config.json");
 
 const configObj = require(configPath);
 
-const config = configObj["development"];
+const config = configObj["test"];
 
 // var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
@@ -47,3 +47,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+//hi
